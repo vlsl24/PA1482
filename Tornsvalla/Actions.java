@@ -1,4 +1,4 @@
-abstract class PlaneAction{
+abstract class Actions{
 
 public abstract void Action();
 }
