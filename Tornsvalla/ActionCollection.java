@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 class ActionCollection {
 
-private static Actions[] ActionList={new LogFlightCode(),new TrackRoute(),new NotifyFighterCommand()};
+private final static Actions[] ActionList={new LogFlightCode(),new TrackRoute(),new NotifyFighterCommand()};
 
 
 /*
@@ -24,14 +24,37 @@ public static ArrayList<Actions> getPlaneActions(String ShortName){
 
 switch (ShortName.toLowerCase()) {
     case "lancaster":
-        
         break;
     case "blenheim":
-    
         break;
     case"mosquito":
         actions.add(ActionList[0]);
         break;
+    case"hurricane":
+        actions.add(ActionList[0]);
+        break;
+    case"spitfire":
+        actions.add(ActionList[0]);
+        break;
+    case"messershmitt":
+        actions.add(ActionList[2]);
+        break;
+    case"focke-wulf":
+        actions.add(ActionList[0]);
+        actions.add(ActionList[2]);
+        break;
+    case"dornier":
+        actions.add(ActionList[1]);
+        break;
+    case"henkel":
+        actions.add(ActionList[1]);
+        break;
+    case"junker":
+        actions.add(ActionList[1]);
+        actions.add(ActionList[2]);
+        
+        break;
+
     default:
     System.out.println("No action found for " + ShortName);
     return null;
@@ -41,7 +64,5 @@ switch (ShortName.toLowerCase()) {
 
     return actions;
 }
-
- 
 
 }
