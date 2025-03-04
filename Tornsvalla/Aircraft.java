@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 class Aircraft {
@@ -5,25 +6,68 @@ class Aircraft {
     private String tailcode;
     private String fullName;
     private String shortName;
-    private String lastSeen;
-    private ArrayList<Actions> actions; 
+    private LocalDateTime lastSeen;
+    private ArrayList<Action> actions;
 
     public Aircraft(String tailcode, String shortName) {
         this.tailcode = tailcode;
-        this.fullName = "fullName EJ SKAPAD";   // Ej klar
         this.shortName = shortName;
-        this.lastSeen = "DATETIME EJ SKAPAD";   // Ej klar
+        this.fullName = generateFullName(shortName);  
+        this.lastSeen = LocalDateTime.now(); 
         this.actions = ActionCollection.getPlaneActions(shortName);
+
+        if (this.actions == null) {
+            this.actions = new ArrayList<>(); 
+        }
     }
 
-    public String getTailcode(){
+    private String generateFullName(String shortName) {
+        switch (shortName.toLowerCase()) {
+            case "lancaster": return "Avro Lancaster";
+            case "blenheim": return "Bristol Blenheim";
+            case "mosquito": return "De Havilland Mosquito";
+            case "hurricane": return "Hawker Hurricane";
+            case "spitfire": return "Supermarine Spitfire";
+            case "messershmitt": return "Messerschmitt Bf 109";
+            case "focke-wulf": return "Focke-Wulf Fw 190";
+            case "dornier": return "Dornier Do 17";
+            case "henkel": return "Heinkel He 111";
+            case "junker": return "Junkers Ju 87";
+            default: return "Unknown Aircraft";
+        }
+    }
+
+    public String getTailcode() {
         return tailcode;
     }
-    // Skulle kunna ändras senare
-    public void info() {
-        System.out.println(fullName + " " + tailcode);
-        System.out.println("Last seen:" + lastSeen);
+
+    public String getFullName() {
+        return fullName;
     }
 
+    public void setLastSeen() {
+        this.lastSeen = LocalDateTime.now();
+    }
 
+    public void info() {
+        System.out.println("Aircraft: " + fullName + " (" + shortName + ") " + tailcode);
+        System.out.println("Last seen: " + lastSeen);
+    }
+
+    public void doActions() {
+        if (actions.isEmpty()) {
+            System.out.println("No actions available for " + shortName);
+            return;
+        }
+        for (Action action : actions) {
+            action.action();
+        }
+    }
+
+    public void setActions() {
+        this.actions = ActionCollection.getPlaneActions(shortName);
+        if (this.actions == null) {
+            this.actions = new ArrayList<>();
+        }
+    }
 }
