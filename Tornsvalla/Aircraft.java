@@ -7,7 +7,7 @@ class Aircraft {
     private String fullName;
     private String shortName;
     private LocalDateTime lastSeen;
-    private ArrayList<Action> actions;
+    private ArrayList<Actions> actions;
 
     public Aircraft(String tailcode, String shortName) {
         this.tailcode = tailcode;
@@ -59,8 +59,8 @@ class Aircraft {
             System.out.println("No actions available for " + shortName);
             return;
         }
-        for (Action action : actions) {
-            action.action();
+        for (Actions action : actions) {
+            action.Action();;
         }
     }
 

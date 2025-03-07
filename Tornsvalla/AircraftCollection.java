@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class AircraftCollection {
 
-    private ArrayList<Aircraft> planes = new ArrayList<>();
+    private static ArrayList<Aircraft> planes = new ArrayList<>();
 
 
     // Denna metod lägger till ny aircraft i listan om tailcode inte redan finns med
     // Nu i efterhand: egentligen borde tailcode-kontrollen läggas i annan klass än här
-    public void addAircraft(Aircraft aircraft) {
+    public static void addAircraft(Aircraft aircraft) {
 
         if (isAircraftInList(aircraft.getTailcode()) == true) {
             planes.add(aircraft);
@@ -30,7 +30,7 @@ public class AircraftCollection {
     // Denna metod ska hämta alla befintliga tailcodes sparade i Aircraft-listan
     // Notera: Denna metod har ändrats så att den inte ansvarar föra att skriva ut tailcodes utan sparar i lista
     // men det innebär att den som kallar på metoden måste känna till ArrayList och kan hantera den i efterhand
-    public ArrayList<String> getAllTailcodes() {
+    public static ArrayList<String> getAllTailcodes() {
 
         ArrayList<String> tailcode_list = new ArrayList<>();
         for (Aircraft a : planes) {
@@ -43,7 +43,7 @@ public class AircraftCollection {
     
 
     // Denna metod ska utföra metoden info() på flygplanet med angiven tailcode
-    public void getAircraftInfo(String tailcode) {
+    public static void getAircraftInfo(String tailcode) {
 
         Aircraft a = getAircraftFromList(tailcode);
 
@@ -55,7 +55,7 @@ public class AircraftCollection {
 
     // Denna metod ska kolla om angivet tailcode finns kopplad till ett aircraft
     // Returenrar true/false
-    private boolean isAircraftInList(String tailcode) {
+    private static boolean isAircraftInList(String tailcode) {
 
         int i = 0;
         boolean tailcode_found = false;
@@ -78,7 +78,7 @@ public class AircraftCollection {
     // Denna metod ska hämta angivet Aircraft-objekt om den finns i listan
     // Returnerar aircraft-objektet eller null
     // Notera: Skulle möjligvis kunna skrivas om med en for-loop och break, (tomayto tomahto)
-    private Aircraft getAircraftFromList(String tailcode) { 
+    private static Aircraft getAircraftFromList(String tailcode) { 
 
         if (isAircraftInList(tailcode) == true) {
 
