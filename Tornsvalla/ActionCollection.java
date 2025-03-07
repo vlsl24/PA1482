@@ -22,7 +22,7 @@ Om ArrayList<Actions> kan vara tom, det betyder att flygplanet har inga actions
 public static ArrayList<Actions> getPlaneActions(String ShortName){
  ArrayList<Actions> actions=new ArrayList<Actions>();
 
-switch (ShortName.toLowerCase()) { // Очень круто!
+switch (ShortName.toLowerCase()) {
     case "lancaster":
         break;
     case "blenheim":

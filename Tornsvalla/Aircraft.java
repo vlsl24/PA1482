@@ -45,9 +45,7 @@ class Aircraft {
             System.out.println("No actions for " + shortName);
         }      
         else{
-            System.out.println("error");
-            for (Actions action : actions) {
-                System.out.println("doing actions");
+            for (Actions action : actions){
                 action.Action();
         }
         }

@@ -6,6 +6,8 @@ public class Tornsvalla  {
     public void seenAircraft(String tailcode, String shortName){
         if (!collection.isAircraftInList(tailcode)) {
             collection.addAircraft(AircraftFactory.createAircraft(tailcode, shortName));
+            collection.getAircraftFromList(tailcode).seen();
+            
         }
         else{
             (collection.getAircraftFromList(tailcode)).seen();  
