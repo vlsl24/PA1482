@@ -18,7 +18,7 @@ public class BackupCollection {
     // och göra metoden add() på dessa platser
     private static void add(Aircraft aircraft) {
         for (String observer : myBackups) {
-            // gör add() för alla 
+            // gör add() för alla
         }
     }
 

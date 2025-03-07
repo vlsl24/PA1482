@@ -1,20 +1,35 @@
+import java.util.ArrayList;
 
 public class Tornsvalla  {
-    public static void main(String[] args) {
-        seen("ABCD", "Mosquito");
-        seen("DEFG", "Junker");
-        AircraftCollection.getAllTailcodes();   // Kollar vilka flyg som sparats i listan
-    }
+    private AircraftCollection collection = new AircraftCollection();
+    
+    public void seenAircraft(String tailcode, String shortName){
+        if (!collection.isAircraftInList(tailcode)) {
+            collection.addAircraft(AircraftFactory.createAircraft(tailcode, shortName));
+        }
+        else{
+            (collection.getAircraftFromList(tailcode)).seen();  
+        }
 
-    public static void seen(String tailcode) {
-        System.out.println("Please specify type of plane observed");
-    }
+    }    
 
-    public static void seen(String tailcode, String type) {
-        AircraftFactory.createPlane(tailcode, type);
-    }
+    public void getAircraftInfo(String tailcode) {
+      Aircraft a =collection.getAircraftFromList(tailcode);
 
-    public static void aircraftInfo(String tailcode) {
-        AircraftCollection.getAircraftInfo(tailcode);
+    System.out.println("tailcode:"+ a.getTailcode()+ " Full Name:"+a.getFullName()+" Last Seen:" +a.getLastSeen());
     }
+    
+     public void removeAircraft(String tailcode){
+        collection.removeAircraft(tailcode);
+     }   
+
+
+     public void getAllAircraftInfo(){
+       ArrayList <Aircraft> AircraftList = collection.getAllAircraft();
+       for (Aircraft a : AircraftList){
+            System.out.println("tailcode: "+ a.getTailcode()+" Short Name: "+ a.getShortName()+ " Full Name: "+a.getFullName()+" Last Seen: " +a.getLastSeen());
+       }
+     }
+
+
 }
